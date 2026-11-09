@@ -1,0 +1,23 @@
+name: Configure invitation website
+
+on:
+  push:
+    branches: [gh-pages]
+    paths: [.github/workflows/configure-invitation-pages.yml]
+
+permissions:
+  contents: read
+  pages: write
+
+jobs:
+  configure:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Use the hosting branch without changing main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api --method PUT "repos/${{ github.repository }}/pages" --input - <<'JSON'
+          {"source":{"branch":"gh-pages","path":"/"}}
+          JSON
