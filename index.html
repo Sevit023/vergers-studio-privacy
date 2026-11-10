@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Privacybeleid van 31 – Eenendertigen Kaartspel, ontwikkeld door Vergers Studio.">
+  <meta name="description" content="Privacybeleid van 31 – Eenendertigen: offline singleplayer en optionele online multiplayer met Firebase, gegevensgebruik en verwijdermogelijkheden.">
   <title>Privacybeleid — 31 | Vergers Studio</title>
   <style>
     :root { color-scheme: dark; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
@@ -18,6 +18,8 @@
     .summary p { margin: 0; }
     h2 { font-size: 1.2rem; line-height: 1.4; margin: 32px 0 10px; }
     p { margin: 0 0 14px; }
+    ul { padding-left: 24px; }
+    li { margin-bottom: 10px; }
     a { color: #f5b443; text-underline-offset: 3px; overflow-wrap: anywhere; }
     code { font-size: .9em; overflow-wrap: anywhere; }
     footer { border-top: 1px solid #34343b; margin-top: 40px; padding-top: 20px; }
@@ -29,40 +31,85 @@
     <div class="brand">Vergers Studio</div>
     <h1>Privacybeleid</h1>
     <p class="app">31 – Eenendertigen Kaartspel</p>
-    <p class="date">Laatst bijgewerkt: <time datetime="2026-10-15">15 oktober 2026</time></p>
+    <p class="date">Laatst bijgewerkt: <time datetime="2026-11-10">10 november 2026</time></p>
   </header>
   <aside class="summary" aria-label="Samenvatting">
-    <p>Een offline kaartspel, zonder account, advertenties of trackers. De app verzamelt of deelt geen persoonsgegevens.</p>
+    <p>Singleplayer werkt volledig offline en initialiseert Firebase niet. Bij optionele online multiplayer verwerken we je roepnaam, een anonieme speler-ID en kamer- en spelgegevens via Google Firebase. De app bevat geen advertenties of analytics. Online gegevens en anonieme accounts worden niet gegarandeerd automatisch na een partij verwijderd; hieronder lees je hoe opslag en verwijdering werken.</p>
   </aside>
   <section>
-    <h2>Over de app</h2>
-    <p>Dit beleid geldt voor 31 – Eenendertigen Kaartspel van Vergers Studio, met Android-pakketnaam <code>nl.vergersstudio.eenendertigen</code>. Je speelt offline tegen computertegenstanders. Om te spelen is geen account of internetverbinding nodig.</p>
+    <h2>1. Over de app en wie verantwoordelijk is</h2>
+    <p>Dit beleid geldt voor 31 – Eenendertigen Kaartspel van Vergers Studio, met Android-pakketnaam <code>nl.vergersstudio.eenendertigen</code>, en de bijbehorende privacy- en uitnodigingswebsite. Vergers Studio is verantwoordelijk voor de hier beschreven verwerking voor de app. Je bereikt ons via <a href="mailto:vergers.studio@gmail.com">vergers.studio@gmail.com</a>.</p>
+    <p>Je kunt offline tegen computertegenstanders spelen of zelf kiezen voor online multiplayer. Voor singleplayer zijn geen internetverbinding en geen Firebase-account nodig.</p>
   </section>
   <section>
-    <h2>Gegevens tijdens het spelen</h2>
-    <p>De app verzamelt, verkoopt of deelt geen persoonsgegevens en verstuurt geen spelgegevens naar Vergers Studio of andere partijen. De app bevat geen advertenties, trackers of eigen analyticsdiensten en vraagt geen toegang tot je contacten, locatie, camera of microfoon.</p>
-    <p>De instellingen en voortgang van het huidige spel worden tijdens gebruik in het werkgeheugen bijgehouden. De huidige versie bewaart deze niet in een eigen database of gebruikersaccount. Android beheert eventuele systeemback-ups en apparaatoverdracht volgens je toestelinstellingen.</p>
+    <h2>2. Offline singleplayer</h2>
+    <p>Singleplayer verwerkt kaarten, instellingen en de lopende partij op je toestel. Deze offline spelgegevens worden door de singleplayerfunctie niet naar Firebase of Vergers Studio verstuurd. Bij uitsluitend offline gebruik start de app geen Firebase-aanmelding of databaseverbinding. Een eerder voor multiplayer aangemaakt Firebase-account kan wel blijven bestaan.</p>
+    <p>De app bevat geen advertenties, Google Analytics of Firebase Crashlytics. We verkopen je persoonsgegevens niet en gebruiken de beschreven spelgegevens niet voor reclame of advertentieprofilering. De app vraagt geen toegang tot je contacten, locatie, camera of microfoon.</p>
   </section>
   <section>
-    <h2>Trillingen</h2>
-    <p>De app gebruikt de normale Android-permissie <code>VIBRATE</code> om voelbare feedback bij spelacties te geven. Deze geeft geen toegang tot persoonsgegevens en vereist geen toestemmingsvenster. De feedback houdt rekening met de haptische instellingen van Android.</p>
+    <h2>3. Welke gegevens multiplayer verwerkt</h2>
+    <p>Als je een kamer maakt, deelneemt of openbaar zoekt, gebruikt de app Firebase Anonymous Authentication en Firebase Realtime Database. Je hoeft daarvoor geen e-mailadres, telefoonnummer of wachtwoord in te vullen.</p>
+    <ul>
+      <li><strong>Roepnaam:</strong> de naam die je zelf invult om aan tafel herkenbaar te zijn. Kies gerust een pseudoniem.</li>
+      <li><strong>Anonieme speler-ID en aanmeldgegevens:</strong> Firebase maakt een unieke gebruikers-ID aan. De SDK bewaart de aanmeldsessie op je toestel om je bij volgende online bezoeken te herkennen. Deze ID is pseudoniem en kan samen met andere gegevens een persoonsgegeven zijn.</li>
+      <li><strong>Kamer- en spelgegevens:</strong> kamercode, partij-ID, deelnemers en hun roepnamen en ID’s, host, gekozen spelinstellingen, bots, kaarten, beurten, acties, levens, scores en ronde-uitkomsten.</li>
+      <li><strong>Synchronisatiegegevens:</strong> actie-ID’s, versienummers, verwerkingsbevestigingen, tijdstempels, verbindingsstatus en een herstelkopie van de spelstatus voor de host. Deze ondersteunen herverbinden en voorkomen dat acties dubbel worden uitgevoerd.</li>
+      <li><strong>Openbaar zoeken:</strong> een zoekadvertentie bevat de kamercode, de anonieme host-ID en tijdstempels. Andere bij Firebase aangemelde zoekers kunnen deze gegevens via de openbare zoekindex ontvangen.</li>
+      <li><strong>Technische Firebase-gegevens:</strong> Google verwerkt onder andere IP-adressen en user-agentgegevens, zoals platform- en SDK-informatie. Authentication verwerkt ook de Firebase-app-ID. Deze gegevens ondersteunen authenticatie, beveiliging, misbruikpreventie en de werking van de dienst. De afwezigheid van een analytics-SDK betekent dus niet dat Firebase geen technische gegevens verwerkt.</li>
+    </ul>
   </section>
   <section>
-    <h2>Google Play en Android</h2>
-    <p>Google Play en Android kunnen onafhankelijk van de app gegevens verwerken voor installatie, updates, beveiliging en systeemdiagnostiek, waaronder Android vitals. Daarop zijn je Google- en toestelinstellingen en het <a href="https://policies.google.com/privacy?hl=nl">privacybeleid van Google</a> van toepassing. De app bevat hiervoor geen eigen dienst voor gegevensverzameling.</p>
+    <h2>4. Waarom we deze gegevens gebruiken</h2>
+    <p>We verwerken de online gegevens om de multiplayerdienst te leveren die je zelf vraagt: spelers herkennen, kamers maken en vinden, deelnemers toelaten, spelacties verwerken en een partij synchroniseren en herstellen. Daarvoor baseren we ons op de uitvoering van de door jou gevraagde dienst. Voor beveiliging en misbruikpreventie gebruiken we ons gerechtvaardigde belang om de dienst betrouwbaar te laten werken. Privacyverzoeken behandelen we om aan onze wettelijke verplichtingen te voldoen.</p>
+    <p>Je kunt ervoor kiezen uitsluitend singleplayer te spelen. Voor een online partij zijn de bijbehorende aanmeld- en spelgegevens nodig.</p>
   </section>
   <section>
-    <h2>Deze privacywebsite</h2>
-    <p>Deze pagina gebruikt geen eigen cookies, advertenties of analytics. Bij publicatie op GitHub Pages kan GitHub technische toegangsgegevens verwerken voor het aanbieden en beveiligen van de website. Zie de <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">privacyverklaring van GitHub</a>.</p>
+    <h2>5. Wie gegevens ontvangt</h2>
+    <ul>
+      <li><strong>Google/Firebase:</strong> levert authenticatie en databaseopslag als technische dienstverlener en verwerker voor de online functies. Daarbij gelden ook de Firebase-voorwaarden en de informatie van Google over technische dienstgegevens en onderaannemers.</li>
+      <li><strong>Andere spelers:</strong> ontvangen lobbygegevens en de voor de partij bedoelde spelstatus. Wie een geldige kamercode of uitnodigingslink heeft, kan binnen de toegangsvoorwaarden lobbygegevens opvragen en proberen deel te nemen. Bij ronde-einde worden de kaarten en resultaten van de betreffende spelers gedeeld.</li>
+      <li><strong>De host:</strong> het toestel dat de partij beheert verwerkt de volledige spelstatus, inclusief verborgen kaarten en de trekstapel. De overige spelers ontvangen tijdens de ronde hun eigen hand en de openbare spelstatus. De host moet daarom worden vertrouwd.</li>
+      <li><strong>Vergers Studio:</strong> kan als beheerder van het Firebase-project opgeslagen gegevens benaderen voor beheer, ondersteuning, beveiliging en de afhandeling van privacyverzoeken.</li>
+    </ul>
+    <p>De app gebruikt Firebase Authentication en database-toegangsregels om toegang volgens de spelrollen te beperken. Firebase versleutelt gegevens tijdens transport; dit is geen end-to-endversleuteling waarbij alleen de spelers gegevens kunnen lezen.</p>
   </section>
   <section>
-    <h2>Contact en privacyvragen</h2>
-    <p>Voor vragen over de app of dit beleid kun je Vergers Studio bereiken via <a href="mailto:vergers.studio@gmail.com">vergers.studio@gmail.com</a>.</p>
-    <p>Als je ons mailt, verwerken we je e-mailadres en de informatie die je zelf meestuurt om je vraag te beantwoorden. We gebruiken deze niet voor reclame en bewaren berichten niet langer dan nodig voor de afhandeling en eventuele wettelijke verplichtingen. Je kunt via hetzelfde adres verzoeken om inzage, correctie of verwijdering van je contactgegevens. De app zelf bewaart geen persoonsgegevens waarvoor een gebruikersaccount moet worden verwijderd.</p>
+    <h2>6. Waar gegevens worden verwerkt</h2>
+    <p>De Realtime Database van deze app is ingesteld op <strong>België (europe-west1)</strong>. Firebase Authentication verwerkt gegevens volgens de officiële Firebase-documentatie in <strong>de Verenigde Staten</strong>. De gekozen databaseregio betekent dus niet dat alle verwerking binnen de EU plaatsvindt. Voor internationale doorgiften, onderaannemers en de daarvoor beschreven waarborgen verwijzen we naar de <a href="https://firebase.google.com/support/privacy">privacy- en beveiligingsinformatie van Firebase</a>.</p>
   </section>
   <section>
-    <h2>Wijzigingen</h2>
+    <h2>7. Lokale opslag en bewaartermijnen</h2>
+    <ul>
+      <li><strong>Op je toestel:</strong> de roepnaam en laatst gebruikte kamercode blijven in de lokale appopslag staan totdat ze worden vervangen of de appgegevens worden gewist. De Firebase-aanmeldsessie kan eveneens bewaard blijven. Een nog niet bevestigde online actie wordt lokaal opgeslagen met actie-ID, versie en eventuele kaartposities; na bevestiging verwijdert de app die actie uit de wachtrij. Een achtergebleven actie kan blijven staan tot bevestiging of het wissen van de appgegevens.</li>
+      <li><strong>Kamer-, spel- en zoekgegevens:</strong> de app probeert gegevens op te ruimen bij onder meer het sluiten van een kamer, annuleren van zoeken en verbreken van een verbinding. Die acties verwijderen niet altijd de hele partij. Het verlaten of afsluiten van een spel verwijdert niet gegarandeerd alle kaarten, resultaten, acties en herstelgegevens uit Firebase. Er is geen algemene automatische eindtermijn voor achtergebleven partijgegevens ingesteld in de app; deze kunnen blijven staan tot een geslaagde opruimactie of verwijdering door de beheerder. Een verlopen zoekadvertentie kan onvindbaar worden zonder dat alle bijbehorende gegevens zijn verwijderd.</li>
+      <li><strong>Anonieme Firebase-accounts:</strong> er geldt geen gegarandeerde automatische verwijdertermijn. Volgens Google blijft authenticatie-informatie bewaard totdat de betreffende Firebase-gebruiker wordt verwijderd. Google vermeldt dat die informatie daarna binnen 180 dagen uit actieve systemen en back-upsystemen wordt verwijderd. Dit is geen automatische verwijdering 180 dagen na het spelen.</li>
+      <li><strong>Technische logs bij Firebase:</strong> Google noemt voor gelogde IP-adressen bij Authentication enkele weken. Voor IP-adressen en user-agentgegevens bij Realtime Database noemt Google enkele dagen, tenzij langere opslag wordt ingesteld. Dit zijn de door Google beschreven termijnen voor die technische gegevens, niet voor onze opgeslagen kamer- en spelgegevens.</li>
+      <li><strong>Contactberichten:</strong> je e-mailadres en wat je zelf meestuurt worden gebruikt voor het beantwoorden en opvolgen van je vraag of verzoek. We bewaren deze gedurende de afhandeling en zolang nodig voor opvolging of wettelijke verplichtingen, en gebruiken ze niet voor reclame.</li>
+    </ul>
+    <p>De app is geconfigureerd om de lokale appgegevens uit te sluiten van Android-cloudback-ups en ingebouwde apparaatoverdracht. Het wissen van lokale appgegevens of verwijderen van de app verwijdert niet vanzelf de gegevens of het anonieme account op Firebase.</p>
+  </section>
+  <section id="verwijderen">
+    <h2>8. Inzage, correctie en verwijdering aanvragen</h2>
+    <p>Je kunt je roepnaam voor volgende online bezoeken aanpassen. Je kunt lokale gegevens wissen via de appinstellingen van Android, bijvoorbeeld <strong>Instellingen → Apps → 31 → Opslag → Gegevens wissen</strong>; de benaming verschilt per toestel. Daarbij kun je de toegang tot je bestaande anonieme aanmeldsessie verliezen.</p>
+    <p>De huidige app heeft geen knop om het Firebase-account en alle bijbehorende servergegevens volledig te verwijderen. Mail voor inzage, correctie of verwijdering naar <a href="mailto:vergers.studio@gmail.com?subject=Privacyverzoek%2031">vergers.studio@gmail.com</a>, bijvoorbeeld met onderwerp <strong>Privacyverzoek 31</strong>. Vermeld zo mogelijk je roepnaam, kamercode en het tijdstip waarop je speelde, en je anonieme speler-ID als je daarover beschikt. Stuur geen aanmeldtokens of wachtwoorden mee. Neem bij voorkeur contact op voordat je de lokale appgegevens wist.</p>
+    <p>We kunnen aanvullende informatie vragen om je verzoek aan de juiste gegevens te koppelen en te voorkomen dat gegevens van iemand anders worden gewijzigd. Alleen een roepnaam is niet altijd voldoende. Het verwijderen van een Firebase-authenticatieaccount en het verwijderen van gekoppelde databasegegevens zijn aparte handelingen; je kunt beide in je verzoek opnemen. Reeds gedeelde uitnodigingen of kopieën bij andere spelers en berichtendiensten kunnen we niet namens die partijen verwijderen.</p>
+    <p>Afhankelijk van de toepasselijke privacywetgeving kun je ook verzoeken om beperking of overdraagbaarheid van je gegevens en bezwaar maken tegen verwerking op grond van gerechtvaardigd belang. Je kunt een klacht indienen bij een toezichthouder, zoals de <a href="https://autoriteitpersoonsgegevens.nl/">Autoriteit Persoonsgegevens</a>. We behandelen verzoeken volgens de toepasselijke wettelijke regels.</p>
+  </section>
+  <section>
+    <h2>9. Uitnodigingslinks en deze website</h2>
+    <p>Als je een uitnodiging deelt, geeft de app de uitnodigingstekst en een link met de kamercode door aan de door jou gekozen deelapp, bijvoorbeeld WhatsApp of een sms-app. De link bevat geen aanmeldtoken, speler-ID of kaarten. De ontvangende app en je browser kunnen de link en technische gegevens verwerken volgens hun eigen privacyvoorwaarden. Onze app leest hiervoor je contacten niet uit.</p>
+    <p>De privacywebsite en uitnodigingspagina onder <code>/join/</code> worden gehost op GitHub Pages. Bij het bezoeken ontvangt GitHub het webverzoek, waaronder je IP-adres en de opgevraagde URL; bij een uitnodigingslink staat de kamercode in die URL. GitHub vermeldt dat het IP-adressen van bezoekers logt en bewaart voor beveiliging. De bewaartermijnen en verdere verwerking door GitHub volgen de <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">privacyverklaring van GitHub</a>.</p>
+    <p>Deze webpagina’s bevatten geen eigen cookies, advertenties of analytics. De uitnodigingspagina leest de code uit de URL om de app te openen of de code te kopiëren. Alleen deze pagina bezoeken meldt je niet bij Firebase aan en claimt geen plek in een kamer.</p>
+  </section>
+  <section>
+    <h2>10. Android, Google Play en trillingen</h2>
+    <p>De app gebruikt de normale Android-permissies <code>INTERNET</code> voor multiplayer en <code>VIBRATE</code> voor voelbare feedback. Hiervoor verschijnt geen apart toestemmingsvenster. De feedback houdt rekening met de haptische instellingen van Android.</p>
+    <p>Google Play en Android kunnen onafhankelijk van onze app gegevens verwerken voor installatie, updates, beveiliging en systeemdiagnostiek, waaronder Android vitals. Daarop zijn je Google- en toestelinstellingen en het <a href="https://policies.google.com/privacy?hl=nl">privacybeleid van Google</a> van toepassing.</p>
+  </section>
+  <section>
+    <h2>11. Wijzigingen en broninformatie</h2>
     <p>We passen dit beleid aan wanneer de werking van de app verandert. De datum bovenaan geeft aan wanneer de tekst voor het laatst is bijgewerkt.</p>
+    <p>Officiële informatie over de gebruikte diensten: <a href="https://firebase.google.com/support/privacy">Firebase privacy en beveiliging</a>, <a href="https://firebase.google.com/docs/android/play-data-disclosure">gegevensverwerking door Firebase Android-SDK’s</a>, <a href="https://firebase.google.com/docs/auth/android/anonymous-auth">anonieme authenticatie</a>, <a href="https://firebase.google.com/docs/database/locations">Realtime Database-locaties</a> en <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection">gegevensverwerking bij GitHub Pages</a>.</p>
   </section>
   <footer>Vergers Studio · 31 – Eenendertigen Kaartspel</footer>
 </main>
